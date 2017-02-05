@@ -40,6 +40,17 @@ some support for the C++ concepts based on the specification in the:
 document. This support is enabled by providing the '-fconcepts' flag
 to the compiler invocation.
 
+## References
+
+* Stroustrup Bjarne, Sutton Andrew - [A Concept Design for C++ on Channel 9](
+  https://sec.ch9.ms/ch9/71d4/a4e5fc51-29d9-4b15-9eb0-9fd7015871d4/GN12StroustrupSuttonConceptDesign_med_ch9.mp4)
+* [ISO/IEC TS 19217 Draft (2015)](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4549.pdf)
+* Tom Honnermann - [Why Concepts didn’t make C++17](
+  http://honermann.net/blog/2016/03/06/why-concepts-didnt-make-cxx17/)
+* Andrew Sutton, Bjarne Stroustrup - [Concepts Lite: Constraining Templates with Predicates](
+  https://isocpp.org/blog/2013/02/concepts-lite-constraining-templates-with-predicates-andrew-sutton-bjarne-s)
+* [About Concepts TS on cppreference.com](http://en.cppreference.com/w/cpp/language/constraints)
+
 ## License
 Copyright (c) 2017 Robert Zavalczki, distributed under the terms
 and conditions of the WTFPL (http://www.wtfpl.net) license.

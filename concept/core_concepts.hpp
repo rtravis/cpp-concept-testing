@@ -9,11 +9,11 @@
 #define CORE_CONCEPTS_HPP__
 
 
-namespace ConceptCheck
+namespace concept_check
 {
 
 /**
- * Declaration of the concept "EqualityComparable" which is satisfied by any
+ * Definition of the concept "EqualityComparable" which is satisfied by any
  * type T such that for any a, b of type T the expression a == b is valid and
  * yields a result convertible to bool.
  *
@@ -61,7 +61,7 @@ concept bool Copyable() {
     return CopyConstructible<T>() && CopyAssignable<T>();
 }
 
-} /* namespace ConceptCheck */
+} /* namespace concept_check */
 
 #endif /* CORE_CONCEPTS_HPP__ */
 
