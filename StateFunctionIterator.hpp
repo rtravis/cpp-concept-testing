@@ -9,7 +9,6 @@
 #define STATEFUNCTIONITERATOR_H_
 
 #include "concept/core_concepts.hpp"
-#include "concept/state_function.hpp"
 
 #include <memory>   // addressof
 #include <iterator> // iterator, input_iterator_tag
@@ -26,16 +25,18 @@ namespace iter_utils
  * The dereference operator extracts the result of the function application.
  * The advantage is that the state handling is abstracted away, being handled
  * behind the scenes by the iterator.
- *
- * \remark among others the 'requires' section of the template declaration
- * ensures that StateFunc behaves like a function of type:
- *     StateType -> (ResultType, StateType)
  */
 template<typename StateFunc, typename StateType, typename ResultType>
-requires concept_check::StateFunction<StateFunc, StateType, ResultType>() &&
-         concept_check::EqualityComparable<StateType>() &&
+requires concept_check::EqualityComparable<StateType>() &&
          concept_check::Copyable<StateType>() &&
-         concept_check::Copyable<ResultType>()
+         concept_check::Copyable<ResultType>() &&
+	 /*
+	  * enforce a relation between the template parameters: namely that an
+	  * instance f of StateFunction can be called with a StateType parameter
+	  * returning a (ResultType, StateType) tuple, i.e.
+	  *     f : StateType -> (ResultType, StateType)
+	  */
+         concept_check::Function<StateFunc, std::tuple<ResultType, StateType>, StateType>()
 class StateFunctionIterator : public std::iterator<std::input_iterator_tag,
                                                    const ResultType>
 {

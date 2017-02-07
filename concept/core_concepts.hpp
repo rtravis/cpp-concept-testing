@@ -13,6 +13,18 @@ namespace concept_check
 {
 
 /**
+ * Definition of the concept "Function" which is satisfied by any type F such
+ * that for an f of type F the expression f(Args...) is valid and yields a
+ * result convertible to R.
+ */
+template<typename F, typename R, typename ...Args>
+concept bool Function() {
+    return requires(F f, Args... args) {
+        { f(args...) } -> R;
+    };
+}
+
+/**
  * Definition of the concept "EqualityComparable" which is satisfied by any
  * type T such that for any a, b of type T the expression a == b is valid and
  * yields a result convertible to bool.
