@@ -30,12 +30,12 @@ template<typename StateFunc, typename StateType, typename ResultType>
 requires concept_check::EqualityComparable<StateType>() &&
          concept_check::Copyable<StateType>() &&
          concept_check::Copyable<ResultType>() &&
-	 /*
-	  * enforce a relation between the template parameters: namely that an
-	  * instance f of StateFunction can be called with a StateType parameter
-	  * returning a (ResultType, StateType) tuple, i.e.
-	  *     f : StateType -> (ResultType, StateType)
-	  */
+        /*
+         * enforce a relation between the template parameters: namely that an
+         * instance f of StateFunction can be called with a StateType parameter
+         * returning a (ResultType, StateType) tuple, i.e.
+         *     f : StateType -> (ResultType, StateType)
+         */
          concept_check::Function<StateFunc, std::tuple<ResultType, StateType>, StateType>()
 class StateFunctionIterator : public std::iterator<std::input_iterator_tag,
                                                    const ResultType>
@@ -46,7 +46,7 @@ private:
     StateFunc stateFunc_;
 
 public:
-    typedef StateFunctionIterator iterator;
+    using iterator = StateFunctionIterator;
 
     /**
      * Make a state function iterator from an initial state and an initial value
@@ -54,9 +54,10 @@ public:
      * Had we not had to provide the initial state, this would have looked like
      * the Monad 'unit' function (called 'return' in Haskell).
      */
-    StateFunctionIterator(const StateType &initialState,
-                          const ResultType &initialValue)
-        : result_(initialValue), state_(initialState), stateFunc_(StateFunc{})
+    constexpr StateFunctionIterator(StateFunc stateFunc,
+                                    const StateType &initialState,
+                                    const ResultType &initialValue)
+        : result_(initialValue), state_(initialState), stateFunc_(stateFunc)
     {
     }
 

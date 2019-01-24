@@ -5,9 +5,8 @@
  * @copyright: Copyright (c) 2017 Robert Zavalczki, distributed under the terms
  * and conditions of the WTFPL (http://www.wtfpl.net) license.
  */
-#ifndef CORE_CONCEPTS_HPP__
-#define CORE_CONCEPTS_HPP__
-
+#ifndef CORE_CONCEPTS_HPP_
+#define CORE_CONCEPTS_HPP_
 
 namespace concept_check
 {
@@ -75,5 +74,4 @@ concept bool Copyable() {
 
 } /* namespace concept_check */
 
-#endif /* CORE_CONCEPTS_HPP__ */
-
+#endif /* CORE_CONCEPTS_HPP_ */
